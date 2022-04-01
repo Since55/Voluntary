@@ -1,0 +1,19 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "Posts",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "asc",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "desc",
+          "order": "DESCENDING"
+        }
+      ]
+    }
+  ],
+  "fieldOverrides": []
+}
