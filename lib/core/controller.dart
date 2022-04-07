@@ -18,6 +18,12 @@ class Controllers {
 }
 
 abstract class Controller extends ChangeNotifier {
+  Controller() {
+    onInit();
+  }
+
+  void onInit() {}
+
   void update() {
     notifyListeners();
   }
@@ -43,6 +49,12 @@ class _UpdaterState<T extends Controller> extends State<Updater<T>> {
     super.initState();
     Controllers.put(widget.controller);
     widget.controller.addListener(() => setState(() {}));
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    widget.controller.removeListener(() => setState(() {}));
   }
 
   @override
