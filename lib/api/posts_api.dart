@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:voluntary/models/post.dart';
 
-class HomeApi {
+class PostsApi {
   static Future<List<Post>> getPosts() async {
     final response = await FirebaseFirestore.instance.collection('posts').get();
     

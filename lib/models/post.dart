@@ -3,14 +3,14 @@ import 'dart:convert';
 class Post {
   final String data;
   final String title;
-  final String image;
+  final String? image;
   final String author;
   final String description;
 
   const Post({
+    this.image,
     required this.data,
     required this.title,
-    required this.image,
     required this.author,
     required this.description,
   });
@@ -63,21 +63,21 @@ class Post {
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
-  
+
     return other is Post &&
-      other.data == data &&
-      other.title == title &&
-      other.image == image &&
-      other.author == author &&
-      other.description == description;
+        other.data == data &&
+        other.title == title &&
+        other.image == image &&
+        other.author == author &&
+        other.description == description;
   }
 
   @override
   int get hashCode {
     return data.hashCode ^
-      title.hashCode ^
-      image.hashCode ^
-      author.hashCode ^
-      description.hashCode;
+        title.hashCode ^
+        image.hashCode ^
+        author.hashCode ^
+        description.hashCode;
   }
 }

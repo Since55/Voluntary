@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:voluntary/core/app_navigator.dart';
 
 class Controllers {
   static final List<Controller> _controllers = [];
 
   static void put<T extends Controller>(T controller) {
-    if (_controllers.any((element) => element is T)) return;
+    if (_controllers.any((element) => element.runtimeType is T)) return;
     _controllers.add(controller);
   }
 
@@ -32,8 +33,10 @@ abstract class Controller extends ChangeNotifier {
 class Updater<T extends Controller> extends StatefulWidget {
   final T controller;
   final Widget Function(BuildContext) builder;
+  final void Function()? onInit;
 
   const Updater({
+    this.onInit,
     required this.builder,
     required this.controller,
     Key? key,
@@ -46,9 +49,11 @@ class Updater<T extends Controller> extends StatefulWidget {
 class _UpdaterState<T extends Controller> extends State<Updater<T>> {
   @override
   void initState() {
-    super.initState();
+    print(widget.controller);
     Controllers.put(widget.controller);
+    super.initState();
     widget.controller.addListener(() => setState(() {}));
+    widget.onInit?.call();
   }
 
   @override

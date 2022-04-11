@@ -8,20 +8,6 @@ void main() async {
   runApp(const App());
 }
 
-class App extends StatelessWidget {
-  const App({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Voluntary',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(primarySwatch: Colors.green),
-      home: const StartScreen(),
-    );
-  }
-}
-
 // class CounterController extends Controller {
 //   int c = 0;
 //   void inc() {
