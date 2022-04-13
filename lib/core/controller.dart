@@ -49,7 +49,6 @@ class Updater<T extends Controller> extends StatefulWidget {
 class _UpdaterState<T extends Controller> extends State<Updater<T>> {
   @override
   void initState() {
-    print(widget.controller);
     Controllers.put(widget.controller);
     super.initState();
     widget.controller.addListener(() => setState(() {}));

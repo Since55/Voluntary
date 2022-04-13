@@ -4,7 +4,15 @@ import 'package:voluntary/models/post.dart';
 class PostsApi {
   static Future<List<Post>> getPosts() async {
     final response = await FirebaseFirestore.instance.collection('posts').get();
-    
-    return response.docs.map((e) => Post.fromMap(e.data())).toList();
+
+    return response.docs
+        .map((e) => Post.fromMap(e.data(), e.reference.id))
+        .toList();
+  }
+
+  static Future<Post> getPost(String id) async {
+    final response =
+        await FirebaseFirestore.instance.collection('posts').doc(id).get();
+    return Post.fromMap(response.data()!, id);
   }
 }

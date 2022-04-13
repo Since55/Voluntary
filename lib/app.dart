@@ -13,7 +13,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Voluntary',
-      home: const StartScreen(),
+      home: const PostsPage(),
       debugShowCheckedModeBanner: false,
       navigatorKey: AppNavigator.navigatorKey,
       onGenerateRoute: AppRouter.onGenerateRoute,
@@ -22,11 +22,11 @@ class App extends StatelessWidget {
   }
 }
 
-class StartScreen extends StatelessWidget {
-  const StartScreen({Key? key}) : super(key: key);
+// class StartScreen extends StatelessWidget {
+//   const StartScreen({Key? key}) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return AppState.isAuthorized ? const PostsPage() : const LoginPage();
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return AppState.isAuthorized ? const PostsPage() : const LoginPage();
+//   }
+// }

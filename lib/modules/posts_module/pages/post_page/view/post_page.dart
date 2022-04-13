@@ -13,14 +13,7 @@ class PostPage extends ControllerView<PostController> {
   @override
   Widget build(BuildContext context) {
     return Updater<PostController>(
-      controller:
-          PostController(ModalRoute.of(context)?.settings.arguments as Post? ??
-              Post(
-                author: 'asdasd',
-                data: 'asdasds',
-                description: 'adasdasdasdasfadsgfdsfgasdf',
-                title: 'asdadsfkjdslkfjlsa',
-              )),
+      controller: PostController(),
       builder: (_) => Scaffold(
         appBar: AppBar(title: const Text('Voluntary'), centerTitle: false),
         body: controller.post == null
