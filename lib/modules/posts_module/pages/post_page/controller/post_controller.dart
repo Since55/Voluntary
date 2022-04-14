@@ -13,6 +13,12 @@ class PostController extends Controller {
     _getPost();
   }
 
+  @override
+  void onDelete() {
+    super.onInit();
+    Controllers.delete(PostController());
+  }
+
   Future<void> _getPost() async {
     final id = AppRouter.route!.split('?id=').last;
     isLoading = true;

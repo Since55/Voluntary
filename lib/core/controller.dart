@@ -10,7 +10,7 @@ class Controllers {
   }
 
   static void delete<T extends Controller>(T controller) {
-    _controllers.remove(controller);
+    _controllers.removeWhere((e) => e.runtimeType == T);
   }
 
   static T find<T extends Controller>() {
@@ -28,6 +28,8 @@ abstract class Controller extends ChangeNotifier {
   void update() {
     notifyListeners();
   }
+
+  void onDelete() {}
 }
 
 class Updater<T extends Controller> extends StatefulWidget {
@@ -59,6 +61,7 @@ class _UpdaterState<T extends Controller> extends State<Updater<T>> {
   void dispose() {
     super.dispose();
     widget.controller.removeListener(() => setState(() {}));
+    widget.controller.onDelete();
   }
 
   @override
