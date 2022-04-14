@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:voluntary/core/app_navigator.dart';
 
 class Controllers {
   static final List<Controller> _controllers = [];
