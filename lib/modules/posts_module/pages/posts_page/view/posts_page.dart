@@ -24,7 +24,7 @@ class PostsPage extends ControllerView<PostsController> {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: TextButton(
-        onPressed: () {},
+        onPressed: controller.handleTapLogin,
         child: const Text(
           'Login',
           style: TextStyle(
@@ -44,7 +44,9 @@ class PostsPage extends ControllerView<PostsController> {
         appBar: AppBar(
           title: const Text('Voluntary'),
           centerTitle: false,
-          actions: [_buildLoginButton()],
+          actions: [
+            if (!AppState.isAuthorized) _buildLoginButton(),
+          ],
         ),
         floatingActionButton: _buildNewPostButton(),
         body: controller.isLoading

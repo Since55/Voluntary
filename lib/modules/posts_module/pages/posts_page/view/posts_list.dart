@@ -45,21 +45,18 @@ class PostCard extends StatelessWidget {
                     ),
                   ),
                   Text(
+                    '${post.date.hour}:${post.date.minute} '
+                    '${post.date.day}.${post.date.month}.${post.date.year}',
+                    style: const TextStyle(color: Colors.grey, fontSize: 12),
+                  ),
+                  Text(
                     post.author,
-                    style: const TextStyle(color: Colors.grey),
+                    style: TextStyle(color: Colors.grey[600]),
                   ),
                   Text(post.description),
                 ],
               ),
             ),
-            //TODO add image with CORS support
-            // if (post.image != null)
-            //   Center(
-            //     child: SizedBox(
-            //       width: 200,
-            //       child: WebImage(post.image!),
-            //     ),
-            //   ),
           ],
         ),
       ),

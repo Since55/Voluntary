@@ -2,6 +2,7 @@ import 'package:voluntary/api/posts_api.dart';
 import 'package:voluntary/core/app_navigator.dart';
 import 'package:voluntary/core/controller.dart';
 import 'package:voluntary/models/post.dart';
+import 'package:voluntary/modules/login_module/view/login_page.dart';
 import 'package:voluntary/modules/posts_module/pages/create_post_page/view/create_post_page.dart';
 import 'package:voluntary/modules/posts_module/pages/post_page/view/post_page.dart';
 
@@ -12,6 +13,10 @@ class PostsController extends Controller {
   @override
   void onInit() {
     _getPosts();
+  }
+
+  void handleTapLogin() {
+    AppNavigator.navigator!.pushNamed(LoginPage.path);
   }
 
   void handleTapPost(Post post) {

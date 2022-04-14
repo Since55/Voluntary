@@ -71,6 +71,46 @@ class CreatePostPage extends ControllerView<CreatePostController> {
                                   controller: controller.details,
                                 ),
                                 const SizedBox(height: 16),
+                                Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Flexible(
+                                      child: TextFormField(
+                                        controller: controller.phone,
+                                        maxLength: 16,
+                                        decoration: _decoration.copyWith(
+                                          prefixIcon: const Icon(Icons.phone),
+                                          counterText: '',
+                                        ),
+                                      ),
+                                    ),
+                                    const SizedBox(width: 16),
+                                    Flexible(
+                                      child: TextFormField(
+                                        controller: controller.email,
+                                        maxLength: 64,
+                                        decoration: _decoration.copyWith(
+                                          prefixIcon:
+                                              const Icon(Icons.email_outlined),
+                                          counterText: '',
+                                        ),
+                                      ),
+                                    ),
+                                    const SizedBox(width: 16),
+                                    Flexible(
+                                      child: TextFormField(
+                                        controller: controller.telegram,
+                                        maxLength: 64,
+                                        decoration: _decoration.copyWith(
+                                          prefixIcon:
+                                              const Icon(Icons.telegram),
+                                          counterText: '',
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                const SizedBox(height: 16),
                                 Align(
                                   alignment: Alignment.bottomRight,
                                   child: ElevatedButton(
@@ -78,7 +118,8 @@ class CreatePostPage extends ControllerView<CreatePostController> {
                                       padding: EdgeInsets.all(8.0),
                                       child: Text('Create'),
                                     ),
-                                    onPressed: controller.formValid
+                                    onPressed: controller.formValid &&
+                                            !controller.isLoading
                                         ? controller.handleTapCreate
                                         : null,
                                   ),

@@ -15,4 +15,8 @@ class PostsApi {
         await FirebaseFirestore.instance.collection('posts').doc(id).get();
     return Post.fromMap(response.data()!, id);
   }
+
+  static Future<void> createPost(Post post) async {
+    await FirebaseFirestore.instance.collection('posts').add(post.toMap());
+  }
 }

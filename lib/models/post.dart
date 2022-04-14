@@ -10,15 +10,17 @@ class Post {
   final String author;
   final String description;
   final Contacts contacts;
+  final DateTime date;
 
   const Post({
-    required this.id,
+    this.id = '',
     required this.data,
     required this.title,
     this.image,
     required this.author,
     required this.description,
     required this.contacts,
+    required this.date,
   });
 
   Post copyWith({
@@ -29,6 +31,7 @@ class Post {
     String? author,
     String? description,
     Contacts? contacts,
+    DateTime? date,
   }) {
     return Post(
       id: id ?? this.id,
@@ -38,6 +41,7 @@ class Post {
       author: author ?? this.author,
       description: description ?? this.description,
       contacts: contacts ?? this.contacts,
+      date: date ?? this.date,
     );
   }
 
@@ -50,6 +54,7 @@ class Post {
       'author': author,
       'description': description,
       'contacts': contacts.toMap(),
+      'date': date.millisecondsSinceEpoch,
     };
   }
 
@@ -62,6 +67,7 @@ class Post {
       author: map['author'] ?? '',
       description: map['description'] ?? '',
       contacts: Contacts.fromMap(map['contacts']),
+      date: DateTime.parse(map['date']),
     );
   }
 
@@ -71,7 +77,7 @@ class Post {
 
   @override
   String toString() {
-    return 'Post(id: $id, data: $data, title: $title, image: $image, author: $author, description: $description, contacts: $contacts)';
+    return 'Post(id: $id, data: $data, title: $title, image: $image, author: $author, description: $description, contacts: $contacts, date: $date)';
   }
 
   @override
@@ -85,7 +91,8 @@ class Post {
         other.image == image &&
         other.author == author &&
         other.description == description &&
-        other.contacts == contacts;
+        other.contacts == contacts &&
+        other.date == date;
   }
 
   @override
@@ -96,6 +103,7 @@ class Post {
         image.hashCode ^
         author.hashCode ^
         description.hashCode ^
-        contacts.hashCode;
+        contacts.hashCode ^
+        date.hashCode;
   }
 }

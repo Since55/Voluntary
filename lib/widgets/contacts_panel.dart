@@ -57,11 +57,10 @@ class ContactsPanel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Wrap(
-
       children: [
-        if (contacts.email != null) _buildEmail(),
-        if (contacts.phone != null) _buildPhone(),
-        if (contacts.telegram != null) _buildTelegram(),
+        if (contacts.hasEmail) _buildEmail(),
+        if (contacts.hasPhone) _buildPhone(),
+        if (contacts.hasTelegram) _buildTelegram(),
       ],
     );
   }

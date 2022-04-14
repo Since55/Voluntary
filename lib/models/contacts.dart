@@ -5,6 +5,10 @@ class Contacts {
   final String? phone;
   final String? telegram;
 
+  bool get hasPhone => phone != null && phone!.isNotEmpty;
+  bool get hasEmail => email != null && email!.isNotEmpty;
+  bool get hasTelegram => telegram != null && telegram!.isNotEmpty;
+
   Contacts({
     this.email,
     this.phone,
