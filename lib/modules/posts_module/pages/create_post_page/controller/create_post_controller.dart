@@ -3,6 +3,7 @@ import 'package:voluntary/api/posts_api.dart';
 import 'package:voluntary/core/app_navigator.dart';
 import 'package:voluntary/core/app_state.dart';
 import 'package:voluntary/core/controller.dart';
+import 'package:voluntary/models/city.dart';
 import 'package:voluntary/models/contacts.dart';
 import 'package:voluntary/models/post.dart';
 
@@ -13,6 +14,7 @@ class CreatePostController extends Controller {
   final phone = TextEditingController();
   final email = TextEditingController();
   final telegram = TextEditingController();
+  City? city;
 
   bool formValid = false;
   bool isLoading = false;
@@ -20,16 +22,23 @@ class CreatePostController extends Controller {
   void handleUpdate() {
     formValid = title.text.isNotEmpty &&
         details.text.isNotEmpty &&
+        city != null &&
         (email.text.isNotEmpty ||
             phone.text.isNotEmpty ||
             telegram.text.isNotEmpty);
     update();
   }
 
+  void handleSelectCity(City city) {
+    this.city = city;
+    handleUpdate();
+  }
+
   Future<void> handleTapCreate() async {
     isLoading = true;
     update();
     final post = Post(
+      city: city!,
       title: title.text,
       data: details.text,
       date: DateTime.now(),

@@ -5,6 +5,7 @@ import 'package:voluntary/core/controller.dart';
 import 'package:voluntary/modules/posts_module/pages/posts_page/controller/posts_controller.dart';
 import 'package:voluntary/modules/posts_module/pages/posts_page/view/posts_list.dart';
 import 'package:voluntary/widgets/loader.dart';
+import 'package:voluntary/widgets/search.dart';
 
 class PostsPage extends ControllerView<PostsController> {
   static const path = '/posts';
@@ -54,17 +55,24 @@ class PostsPage extends ControllerView<PostsController> {
             : LayoutBuilder(
                 builder: (_, constraints) {
                   final bigScreen = constraints.maxWidth > 1000;
-                  return Row(
+                  return Column(
                     children: [
-                      if (bigScreen) const Spacer(),
-                      SizedBox(
-                        width: 550,
-                        child: PostsList(
-                          controller.posts,
-                          onTap: controller.handleTapPost,
+                      Search(controller.handleSearch),
+                      Expanded(
+                        child: Row(
+                          children: [
+                            if (bigScreen) const Spacer(),
+                            SizedBox(
+                              width: 550,
+                              child: PostsList(
+                                controller.toDisplayPosts,
+                                onTap: controller.handleTapPost,
+                              ),
+                            ),
+                            if (bigScreen) const Spacer(),
+                          ],
                         ),
                       ),
-                      if (bigScreen) const Spacer(),
                     ],
                   );
                 },

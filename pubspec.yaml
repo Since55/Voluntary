@@ -31,10 +31,12 @@ dependencies:
   cupertino_icons: ^1.0.2
   firebase_auth: ^3.3.13
   firebase_core: ^1.14.0
+  firebase_database: ^9.0.12
   flutter:
     sdk: flutter
   http: ^0.13.4
   path_provider: ^2.0.9
+  searchfield: ^0.6.4
   url_launcher: ^6.0.20
 
 dev_dependencies:

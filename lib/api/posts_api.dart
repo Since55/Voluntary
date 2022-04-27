@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:voluntary/api/cities_api.dart';
 import 'package:voluntary/models/post.dart';
 
 class PostsApi {
@@ -7,7 +8,8 @@ class PostsApi {
 
     return response.docs
         .map((e) => Post.fromMap(e.data(), e.reference.id))
-        .toList();
+        .toList()
+      ..sort((a, b) => b.date.compareTo(a.date));
   }
 
   static Future<Post> getPost(String id) async {

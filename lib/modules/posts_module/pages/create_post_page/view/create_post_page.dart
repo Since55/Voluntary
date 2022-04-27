@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:searchfield/searchfield.dart';
 import 'package:voluntary/core/controller.dart';
 import 'package:voluntary/modules/posts_module/pages/create_post_page/controller/create_post_controller.dart';
+import 'package:voluntary/widgets/city_search.dart';
 
 class CreatePostPage extends ControllerView<CreatePostController> {
   static const path = '/create-post';
@@ -110,6 +112,9 @@ class CreatePostPage extends ControllerView<CreatePostController> {
                                     ),
                                   ],
                                 ),
+                                const SizedBox(height: 16),
+                                _buildHeader('City'),
+                                CitySearch(controller.handleSelectCity),
                                 const SizedBox(height: 16),
                                 Align(
                                   alignment: Alignment.bottomRight,

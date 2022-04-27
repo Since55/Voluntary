@@ -2,6 +2,8 @@ import 'dart:convert';
 
 import 'package:voluntary/models/contacts.dart';
 
+import 'city.dart';
+
 class Post {
   final String id;
   final String data;
@@ -11,6 +13,7 @@ class Post {
   final String description;
   final Contacts contacts;
   final DateTime date;
+  final City city;
 
   const Post({
     this.id = '',
@@ -21,6 +24,7 @@ class Post {
     required this.description,
     required this.contacts,
     required this.date,
+    required this.city,
   });
 
   Post copyWith({
@@ -32,6 +36,7 @@ class Post {
     String? description,
     Contacts? contacts,
     DateTime? date,
+    City? city,
   }) {
     return Post(
       id: id ?? this.id,
@@ -42,6 +47,7 @@ class Post {
       description: description ?? this.description,
       contacts: contacts ?? this.contacts,
       date: date ?? this.date,
+      city: city ?? this.city,
     );
   }
 
@@ -54,7 +60,8 @@ class Post {
       'author': author,
       'description': description,
       'contacts': contacts.toMap(),
-      'date': date.millisecondsSinceEpoch,
+      'date': date.toString(),
+      'city': city.toMap(),
     };
   }
 
@@ -68,6 +75,7 @@ class Post {
       description: map['description'] ?? '',
       contacts: Contacts.fromMap(map['contacts']),
       date: DateTime.parse(map['date']),
+      city: City.fromMap(map['city']),
     );
   }
 
@@ -77,7 +85,7 @@ class Post {
 
   @override
   String toString() {
-    return 'Post(id: $id, data: $data, title: $title, image: $image, author: $author, description: $description, contacts: $contacts, date: $date)';
+    return 'Post(id: $id, data: $data, title: $title, image: $image, author: $author, description: $description, contacts: $contacts, date: $date, city: $city)';
   }
 
   @override
@@ -92,7 +100,8 @@ class Post {
         other.author == author &&
         other.description == description &&
         other.contacts == contacts &&
-        other.date == date;
+        other.date == date &&
+        other.city == city;
   }
 
   @override
@@ -104,6 +113,7 @@ class Post {
         author.hashCode ^
         description.hashCode ^
         contacts.hashCode ^
-        date.hashCode;
+        date.hashCode ^
+        city.hashCode;
   }
 }

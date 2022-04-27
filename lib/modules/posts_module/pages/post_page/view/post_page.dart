@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:voluntary/core/app_navigator.dart';
 import 'package:voluntary/core/controller.dart';
 import 'package:voluntary/models/post.dart';
 import 'package:voluntary/modules/posts_module/pages/post_page/controller/post_controller.dart';
@@ -15,7 +16,15 @@ class PostPage extends ControllerView<PostController> {
     return Updater<PostController>(
       controller: PostController(),
       builder: (_) => Scaffold(
-        appBar: AppBar(title: const Text('Voluntary'), centerTitle: false),
+        appBar: AppBar(
+          title: const Text('Voluntary'),
+          centerTitle: false,
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back_ios),
+            onPressed: () => AppNavigator.navigator!
+                .popUntil((route) => route.settings.name == '/'),
+          ),
+        ),
         body: controller.post == null
             ? const Loader()
             : PostView(controller.post!),

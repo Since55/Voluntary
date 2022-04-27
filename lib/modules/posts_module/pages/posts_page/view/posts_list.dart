@@ -53,6 +53,10 @@ class PostCard extends StatelessWidget {
                     post.author,
                     style: TextStyle(color: Colors.grey[600]),
                   ),
+                  Text(
+                    post.city.objectName,
+                    style: TextStyle(color: Colors.grey[800], fontSize: 12),
+                  ),
                   Text(post.description),
                 ],
               ),
