@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:voluntary/core/app_navigator.dart';
 import 'package:voluntary/core/controller.dart';
-import 'package:voluntary/models/post.dart';
 import 'package:voluntary/modules/posts_module/pages/post_page/controller/post_controller.dart';
 import 'package:voluntary/modules/posts_module/pages/post_page/view/post_view.dart';
 import 'package:voluntary/widgets/loader.dart';

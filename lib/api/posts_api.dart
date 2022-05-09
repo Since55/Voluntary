@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:voluntary/api/cities_api.dart';
 import 'package:voluntary/models/post.dart';
 
 class PostsApi {

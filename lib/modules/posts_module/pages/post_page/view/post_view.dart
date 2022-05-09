@@ -35,6 +35,11 @@ class PostView extends StatelessWidget {
                         post.author,
                         style: const TextStyle(color: Colors.grey),
                       ),
+                      Text(
+                        post.city.objectName,
+                        style:
+                            const TextStyle(color: Colors.grey, fontSize: 12),
+                      ),
                       Text(post.data),
                     ],
                   ),

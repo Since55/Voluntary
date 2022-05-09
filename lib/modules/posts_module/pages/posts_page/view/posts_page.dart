@@ -63,7 +63,7 @@ class PostsPage extends ControllerView<PostsController> {
                           children: [
                             if (bigScreen) const Spacer(),
                             SizedBox(
-                              width: 550,
+                              width: bigScreen ? 550 : constraints.maxWidth,
                               child: PostsList(
                                 controller.toDisplayPosts,
                                 onTap: controller.handleTapPost,
